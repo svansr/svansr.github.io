@@ -1,6 +1,4 @@
 ---
 layout: home
 ---
-# Hello, World!
-
-Welcome to SvanSr first? HTML web page.
+Welcome to SvanSr first HTML web page.
