@@ -1,9 +1,6 @@
 - bank: klarna
-  räntefritt: 30
-  korv: mos
+  rantefritt: 30
 - bank: norwegian
-  räntefritt: 45
-  korv: mos
+  rantefritt: 45
 - bank: morrow
-  räntefritt: 50
-  korv: mos
+  rantefritt: 50
