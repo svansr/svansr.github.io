@@ -1,0 +1,6 @@
+- bank: klarna
+  räntefritt: 30
+- bank: norwegian
+  räntefritt: 45
+- bank: morrow
+  räntefritt: 50
