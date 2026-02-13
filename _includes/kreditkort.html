@@ -41,7 +41,10 @@
     ths[j].classList.toggle("asc");
     ths[j].style.cursor='pointer';
     ths[j].addEventListener('click',(e)=>{
-        for(let k=0;k<ths.length;k++)ths[k].style.color=thsColor;
+        for(let k=0;k<ths.length;k++){
+            ths[k].style.color=thsColor;
+            ths[k].classList.remove("asc", "desc");
+    }
         e.currentTarget.style.color='yellow';
         rws.sort((a,b)=> {
         if(e.currentTarget.sort>0){
@@ -50,11 +53,7 @@
             b=tmp;
         }
             
-
-        const txt1 = a.cells[e.currentTarget.cellIndex].innerText;
-        const txt2 = b.cells[e.currentTarget.cellIndex].innerText;
-        const res = txt1.localeCompare(txt2);
-        return res;
+        return a.cells[e.currentTarget.cellIndex].innerText.localeCompare(b.cells[e.currentTarget.cellIndex].innerText);
         });
 
         e.currentTarget.sort=(-1)*e.currentTarget.sort
