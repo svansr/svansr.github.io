@@ -1,11 +1,64 @@
 <h1>Kreditkort</h1>
 <hr>
-<ul>
+<div id="kreditkort">
+    <style scoped>
+        /*th{cursor:pointer}*/
+    </style>
+<!-- <table>
+    <thead><tr><th>Bank</th><th>Räntefritt</th></tr></thead>
+    <tbody>
+        <tr><td>Klarna</td><td>33</td></tr>
+        <tr><td>Morrow</td><td>34</td></tr>
+        <tr><td>Northmill</td><td>25</td></tr>
+</tbody>
+</table> -->
+    <table>
+    <thead><tr><th>Bank</th><th>Räntefritt</th></tr></thead>
+    <tbody>
     {% for card in site.data.kreditkort %}
-    <li>
-        <a href="https://github.com/{{ card.bank }}">
-            {{ card.rantefritt }}
-        </a>
-    </li>
+    <tr><td>{{ card.bank }}</td><td>{{ card.rantefritt }}</td></tr>
     {% endfor %}
-</ul>
+    </tbody>
+    </table>
+</div>
+<script>
+    const script = document.createElement('script');
+    script.innerHTML = `let div=document.getElementById('kreditkort');
+    const tbls=div.getElementsByTagName('table');
+    const tableHead=tbls[0].getElementsByTagName('thead')[0];
+    for(let i=0;i<tableHead.rows.length;i++){
+    let ths=tableHead.rows[i].getElementsByTagName('th');
+    for(let j=0;j<ths.length;j++){
+    ths[j].sort=1;
+    ths[j].style.cursor='pointer';
+    ths[j].addEventListener('click',(e)=>{
+        e.currentTarget.style.color='yellow';
+        console.log(e.currentTarget.cellIndex)
+        rws.sort((a,b)=> {
+        if(e.currentTarget.sort<0){
+            const tmp=a;
+            a=b;
+            b=tmp;
+        }
+
+        return a.cells[e.currentTarget.cellIndex].innerText.localeCompare(b.cells[e.currentTarget.cellIndex].innerText)
+        });
+
+        e.currentTarget.sort=-1*e.currentTarget.sort
+        while(0<tbodyRef.rows.length)tbodyRef.rows[0].remove();
+        for(let i=0;i<rws.length;i++){
+            const newRow = tbodyRef.insertRow();
+            for(let j=0;j<ths.length;j++){
+                const cell1 = newRow.insertCell(j);
+                cell1.textContent = rws[i].cells[j].innerText;
+            }
+        }
+    });
+    }
+    }
+    
+    const tbodyRef=tbls[0].getElementsByTagName('tbody')[0];
+    let rws=[...tbodyRef.rows];
+    `
+document.body.appendChild(script);
+</script>
