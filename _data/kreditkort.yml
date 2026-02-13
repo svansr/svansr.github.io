@@ -1,6 +1,18 @@
-- bank: klarna
+- bank: Klarna
   rantefritt: 30
-- bank: norwegian
+  arsavgift: 0
+  paminnelseavgift: 60
+  valutapaslag: 0
+  nominellRanta: 1
+- bank: Norwegian
   rantefritt: 45
-- bank: morrow
+  arsavgift: 0
+  paminnelseavgift: 60
+  valutapaslag: 0.0175
+  nominellRanta: 1
+- bank: Morrow
   rantefritt: 50
+  arsavgift: 0
+  paminnelseavgift: 60
+  valutapaslag: 0.0175
+  nominellRanta: 1
