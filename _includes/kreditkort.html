@@ -13,7 +13,7 @@
 </tbody>
 </table> -->
     <table>
-    <thead><tr><th>Bank</th><th>Räntefritt</th></tr></thead>
+    <thead><tr><th>Bank</th><th title="Räntefria dagar">Räntefritt</th></tr></thead>
     <tbody>
     {% for card in site.data.kreditkort %}
     <tr><td>{{ card.bank }}</td><td>{{ card.rantefritt }}</td></tr>
@@ -33,7 +33,6 @@
     ths[j].style.cursor='pointer';
     ths[j].addEventListener('click',(e)=>{
         e.currentTarget.style.color='yellow';
-        console.log(e.currentTarget.cellIndex)
         rws.sort((a,b)=> {
         if(e.currentTarget.sort<0){
             const tmp=a;
