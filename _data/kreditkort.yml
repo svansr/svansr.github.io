@@ -3,16 +3,16 @@
   arsavgift: 0
   paminnelseavgift: 60
   valutapaslag: 0
-  nominellRanta: 1
+  nominellRanta: 0.219
+- bank: Morrow
+  rantefritt: 50 (upp till)
+  arsavgift: 0
+  paminnelseavgift: 60
+  valutapaslag: 0.0175
+  nominellRanta: 0.214
 - bank: Norwegian
   rantefritt: 45 (upp till)
   arsavgift: 0
   paminnelseavgift: 60
   valutapaslag: 0.0199
   nominellRanta: 0.22
-- bank: Morrow
-  rantefritt: 50 (upp till)
-  arsavgift: 0
-  paminnelseavgift: 60
-  valutapaslag: 0.175
-  nominellRanta: 0.214

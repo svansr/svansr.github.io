@@ -2,7 +2,14 @@
 <hr>
 <div id="kreditkort">
     <style scoped>
-        /*th{cursor:pointer}*/
+    th.asc::after {
+        content: '▲'; /* Up arrow */
+        color: #000;
+    }
+    th.desc::after {
+        content: '▼'; /* Down arrow */
+        color: #000;
+    }
     </style>
 <!-- <table>
     <thead><tr><th>Bank</th><th>Räntefritt</th></tr></thead>
@@ -13,10 +20,10 @@
 </tbody>
 </table> -->
     <table>
-    <thead><tr><th>Bank</th><th title="Räntefria dagar">Räntefritt</th></tr></thead>
+    <thead><tr><th>Bank</th><th title="Räntefria dagar">Räntefritt</th><th>Påminnelseavgift</th><th title="Nominell ränta">Ränta</th><th>Valutapåslag</th></tr></thead>
     <tbody>
     {% for card in site.data.kreditkort %}
-    <tr><td>{{ card.bank }}</td><td>{{ card.rantefritt }}</td></tr>
+    <tr><td>{{ card.bank }}</td><td>{{ card.rantefritt }}</td><td>{{ card.paminnelseavgift }}</td><td>{{ card.nominellRanta }}</td><td>{{ card.valutapaslag }}</td></tr>
     {% endfor %}
     </tbody>
     </table>
@@ -27,23 +34,38 @@
     const tbls=div.getElementsByTagName('table');
     const tableHead=tbls[0].getElementsByTagName('thead')[0];
     for(let i=0;i<tableHead.rows.length;i++){
-    let ths=tableHead.rows[i].getElementsByTagName('th');
+    const ths=tableHead.rows[i].getElementsByTagName('th');
+    const thsColor = ths[0].style.color;
     for(let j=0;j<ths.length;j++){
     ths[j].sort=1;
+    ths[j].classList.toggle("asc");
     ths[j].style.cursor='pointer';
     ths[j].addEventListener('click',(e)=>{
+        for(let k=0;k<ths.length;k++)ths[k].style.color=thsColor;
         e.currentTarget.style.color='yellow';
         rws.sort((a,b)=> {
-        if(e.currentTarget.sort<0){
+        if(e.currentTarget.sort>0){
             const tmp=a;
             a=b;
             b=tmp;
         }
+            
 
-        return a.cells[e.currentTarget.cellIndex].innerText.localeCompare(b.cells[e.currentTarget.cellIndex].innerText)
+        const txt1 = a.cells[e.currentTarget.cellIndex].innerText;
+        const txt2 = b.cells[e.currentTarget.cellIndex].innerText;
+        const res = txt1.localeCompare(txt2);
+        return res;
         });
 
-        e.currentTarget.sort=-1*e.currentTarget.sort
+        e.currentTarget.sort=(-1)*e.currentTarget.sort
+        if(e.currentTarget.sort===0){
+            e.currentTarget.classList.remove("asc", "desc");
+        }
+        else{
+            e.currentTarget.classList.toggle("asc");
+            e.currentTarget.classList.toggle("desc");
+        }
+            
         while(0<tbodyRef.rows.length)tbodyRef.rows[0].remove();
         for(let i=0;i<rws.length;i++){
             const newRow = tbodyRef.insertRow();
