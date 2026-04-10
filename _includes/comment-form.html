@@ -51,16 +51,25 @@
   </div>
 </form>
 <script>
-    document.getElementById('tn6uoxq7k').addEventListener('submit', async function (e) {
+  const xxx=document.getElementById('tn6uoxq7k');
+  // const yyy=document.getElementsByTagName('form');
+  // console.log(yyy[0][2].value.length)
+    xxx.addEventListener('submit', async function (e) {
       e.preventDefault(); // Prevent normal form submission
-
+// console.log(this[2].value.length)
       try {
         // Collect form data
         const formData = new FormData(this);
-
+// console.log("All form entries:");
+//       for (const [key, value] of formData.entries()) {
+//         console.log(key, ":", value);
+//       }
         // Send POST request
         const response = await fetch('{{ site.staticman_url }}', {
           method: 'POST',
+          headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
           body: formData
         });
 
