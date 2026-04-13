@@ -1,5 +1,5 @@
 <!-- _includes/comments.html -->
-<section class="comments">{{page.slug}}
+<section class="comments">
   {% if site.data.comments[page.slug] %}
   <div>
     <h2>Comments</h2>
@@ -8,7 +8,7 @@
   {% endif %}
 
   <div>
-    <h2>Leave a Comment again</h2>slug: {{page.slug}}
+    <h2>Leave a Comment</h2>slug: {{page.slug}}
     {% include comment-form.html %}
   </div>
 </section>
