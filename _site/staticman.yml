@@ -23,12 +23,13 @@ comments:
   branch: 'main'
 
   # Text to use as the commit message or pull request title. Accepts placeholders.
-  commitMessage: 'chore: New comment on {fields.slug}'
+  commitMessage: 'Comment from {fields.name} on {options.slug}'
 
   # (*) REQUIRED
   #
   # Destination path (filename) for the data files. Accepts placeholders.
-  filename: '{fields.slug}-entry{@timestamp}'
+  # filename: '{fields.slug}-entry{@timestamp}'
+  filename: "entry{@timestamp}"
 
   # The format of the generated data files. Accepted values are "json", "yaml"
   # or "frontmatter"
