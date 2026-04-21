@@ -2,3 +2,4 @@ theme: minima
 title: Blogging Like a Hacker
 description: A short description of my site's purpose
 staticman_url: https://comment-worker.jonas-svanberg.workers.dev/api/handle/form
+timezone: Europe/Stockholm
