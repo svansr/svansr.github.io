@@ -14,7 +14,12 @@
 </section>
 <script>7
   const evtSource = new EventSource('{{ site.staticman_url }}/api/sse');
-  evtSource.addEventListener("commentCreated", (event) => {
-    console.log('comment created')
-  });
+  // evtSource.addEventListener("commentCreated", (event) => {
+  //   console.log('comment created')
+  // });
+
+  evtSource.onmessage = (event) => {
+    console.log('comment created');
+  };
+
 </script>
