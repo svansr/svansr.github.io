@@ -25,7 +25,13 @@ console.log('Start event source');
   };
 
 evtSource.onerror = (err) => {
-  console.error("EventSource failed:", err);
+  if (evtSource.readyState === EventSource.CONNECTING) {
+        console.warn('SSE reconnecting...');
+    } else if (evtSource.readyState === EventSource.CLOSED) {
+        console.error('SSE connection closed permanently.');
+    } else {
+        console.error('SSE error:', err);
+    }
 };
 
 console.log('End event source');
