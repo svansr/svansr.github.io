@@ -13,8 +13,6 @@
   </div>
 </section>
 <script>
-console.log('Start event source');
-
   const evtSource = new EventSource('{{ site.staticman_url }}/api/sse');
   // evtSource.addEventListener("commentCreated", (event) => {
   //   console.log('comment created')
@@ -33,6 +31,4 @@ evtSource.onerror = (err) => {
         console.error('SSE error:', err);
     }
 };
-
-console.log('End event source');
 </script>
