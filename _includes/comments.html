@@ -19,16 +19,21 @@
   // });
 
   evtSource.onmessage = (event) => {
-    console.log('comment created: '+event.data);
+    console.log('comment created: ' + event.data);
   };
 
-evtSource.onerror = (err) => {
-  if (evtSource.readyState === EventSource.CONNECTING) {
-        console.warn('SSE reconnecting...');
+  evtSource.addEventListener('close', () => {
+    console.log('closing...');
+    evtSource.close();
+  });
+
+  evtSource.onerror = (err) => {
+    if (evtSource.readyState === EventSource.CONNECTING) {
+      console.warn('SSE reconnecting...');
     } else if (evtSource.readyState === EventSource.CLOSED) {
-        console.error('SSE connection closed permanently.');
+      console.error('SSE connection closed permanently.');
     } else {
-        console.error('SSE error:', err);
+      console.error('SSE error:', err);
     }
-};
+  };
 </script>
