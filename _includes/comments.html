@@ -12,8 +12,8 @@
     {% include comment-form.html %}
   </div>
 </section>
-<script>
-  const evtSource = new EventSource('{{ site.staticman_url }}/sse');
+<script>7
+  const evtSource = new EventSource('{{ site.staticman_url }}/api/sse');
   evtSource.addEventListener("commentCreated", (event) => {
     console.log('comment created')
   });
