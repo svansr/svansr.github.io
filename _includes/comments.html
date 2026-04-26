@@ -19,7 +19,7 @@
   // });
 
   evtSource.onmessage = (event) => {
-    console.log('comment created: ' + event.data + ', event: ' + event.event + ', id: ' + event);
+    console.log('comment created: ' + event.data + ', event: ' + event.origin + ', id: ' + event);
   };
 
   evtSource.addEventListener('close', () => {
