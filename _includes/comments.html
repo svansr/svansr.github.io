@@ -21,7 +21,7 @@ console.log('Start event source');
   // });
 
   evtSource.onmessage = (event) => {
-    console.log('comment created');
+    console.log('comment created: '+event.data);
   };
 
 evtSource.onerror = (err) => {
