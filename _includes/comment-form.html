@@ -46,7 +46,7 @@
       //         console.log(key, ":", value);
       //       }
       // Send POST request
-      const response = await fetch('{{ site.staticman_url }}', {
+      const response = await fetch('{{ site.staticman_url }}/api/handle/form', {
         method: 'POST',
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(new FormData(this)).toString()
