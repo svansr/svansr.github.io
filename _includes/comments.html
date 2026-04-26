@@ -24,5 +24,9 @@ console.log('Start event source');
     console.log('comment created');
   };
 
+evtSource.onerror = (err) => {
+  console.error("EventSource failed:", err);
+};
+
 console.log('End event source');
 </script>
