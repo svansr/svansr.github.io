@@ -22,6 +22,10 @@
     console.log('comment created: ' + event.data + ', event: ' + event.origin + ', id: ' + event);
   };
 
+  evtSource.addEventListener('time-update', (e) => {
+    console.log('Update:', e.data)
+  });
+
   evtSource.addEventListener('close', () => {
     console.log('closing...');
     evtSource.close();
