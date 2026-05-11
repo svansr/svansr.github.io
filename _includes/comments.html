@@ -32,7 +32,6 @@
   });
 
   evtSource.onerror = (err) => {
-    console.error('SSE Error:', err);
     if (evtSource.readyState === EventSource.CONNECTING) {
       console.warn('SSE reconnecting...');
     } else if (evtSource.readyState === EventSource.CLOSED) {
