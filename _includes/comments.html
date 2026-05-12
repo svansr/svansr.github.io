@@ -1,6 +1,6 @@
 <!-- _includes/comments.html -->
 <section class="comments">
-  <form action="{{ site.staticman_url }}/api/handle/sse">
+  <form action="{{ site.staticman_url }}/api/handle/sse" method="get" id="e64EkjvcL">
     <button title="klicka här" type="submit">Hej</button>
   </form>
   {% if site.data.comments[page.slug] %}
@@ -16,6 +16,34 @@
   </div>
 </section>
 <script>
+const xxx = document.getElementById('e64EkjvcL');
+  // const yyy=document.getElementsByTagName('form');
+  // console.log(yyy[0][2].value.length)
+  xxx.addEventListener('submit', async function (e) {
+    e.preventDefault(); // Prevent normal form submission
+    try {
+      // Send POST request
+      const response = await fetch('{{ site.staticman_url }}/api/handle/sse', {
+        method: 'POST',
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(new FormData(this)).toString()
+      });
+
+      if (response.ok) {
+        //location.reload(); // Refresh page
+      }
+      else {
+        throw new Error(`Server error: ${response.status}`);
+      }
+
+      const result = await response.text();
+      alert(`Server says: ${result}`);
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Failed to send form.');
+    }
+  });
+
   const evtSource = new EventSource('{{ site.staticman_url }}/api/sse');
   // evtSource.addEventListener("commentCreated", (event) => {
   //   console.log('comment created')
