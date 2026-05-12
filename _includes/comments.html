@@ -1,5 +1,8 @@
 <!-- _includes/comments.html -->
 <section class="comments">
+  <form action="{{ site.staticman_url }}/api/handle/sse">
+    <button title="klicka här" type="submit">Hej</button>
+  </form>
   {% if site.data.comments[page.slug] %}
   <div>
     <h2>Comments</h2>
