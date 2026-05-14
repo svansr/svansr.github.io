@@ -37,7 +37,7 @@ evtSource.close();
       }
 
       const result = await response.text();
-      // alert(`Server says: ${result}`);
+      console.log(`Server says: ${result}`);
     } catch (error) {
       console.error('Error:', error);
       // alert('Failed to send form.');
