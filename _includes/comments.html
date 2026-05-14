@@ -28,7 +28,7 @@ const yyy = document.getElementById('e64EkjvcL');
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(new FormData(this)).toString()
       });
-
+evtSource.close();
       if (response.ok) {
         //location.reload(); // Refresh page
       }
