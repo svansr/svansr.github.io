@@ -32,10 +32,10 @@
   </div>
 </form>
 <script>
-  const xxx = document.getElementById('tn6uoxq7k');
+  const tn6uoxq7k = document.getElementById('tn6uoxq7k');
   // const yyy=document.getElementsByTagName('form');
   // console.log(yyy[0][2].value.length)
-  xxx.addEventListener('submit', async function (e) {
+  tn6uoxq7k.addEventListener('submit', async function (e) {
     e.preventDefault(); // Prevent normal form submission
     // console.log(this[2].value.length)
     try {
@@ -57,17 +57,17 @@
       });
 
       if (response.ok) {
-        location.reload(); // Refresh page
+        ;// location.reload(); // Refresh page
       }
       else {
         throw new Error(`Server error: ${response.status}`);
       }
 
       const result = await response.text();
-      alert(`Server says: ${result}`);
+      // alert(`Server says: ${result}`);
     } catch (error) {
       console.error('Error:', error);
-      alert('Failed to send form.');
+      // alert('Failed to send form.');
     }
   });
 </script>
