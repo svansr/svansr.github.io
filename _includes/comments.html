@@ -28,9 +28,10 @@ const yyy = document.getElementById('e64EkjvcL');
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(new FormData(this)).toString()
       });
-evtSource.close();
+      
       if (response.ok) {
-        //location.reload(); // Refresh page
+        // console.log('reload...')
+        // location.reload(); // Refresh page
       }
       else {
         throw new Error(`Server error: ${response.status}`);
@@ -45,9 +46,9 @@ evtSource.close();
   });
 
   const evtSource = new EventSource('{{ site.staticman_url }}/api/sse');
-  // evtSource.addEventListener("commentCreated", (event) => {
-  //   console.log('comment created')
-  // });
+  evtSource.addEventListener("commentCreated", (event) => {
+    console.log('comment created')
+  });
 
   evtSource.onmessage = (event) => {
     console.log('comment created: ' + event.data + ', event: ' + event.origin + ', id: ' + event);
