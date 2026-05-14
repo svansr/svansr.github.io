@@ -58,6 +58,7 @@
 
       console.log('Create comment requested');
       if (response.ok) {
+        console.log('Response is OK');
         ;// location.reload(); // Refresh page
       }
       else {
@@ -65,7 +66,7 @@
       }
 
       const result = await response.text();
-      // alert(`Server says: ${result}`);
+      console.log(`Server says: ${result}`);
     } catch (error) {
       console.error('Error:', error);
       // alert('Failed to send form.');
