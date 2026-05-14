@@ -47,6 +47,7 @@ const yyy = document.getElementById('e64EkjvcL');
 
   const evtSource = new EventSource('{{ site.staticman_url }}/api/sse');
   evtSource.addEventListener("commentCreated", (event) => {
+    console.log('refresh page')
     location.reload(); // Refresh page
   });
 
