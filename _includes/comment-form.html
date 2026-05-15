@@ -60,6 +60,8 @@
       if (response.ok) {
         console.log('Response is OK');
         ;// location.reload(); // Refresh page
+        // Loop through all form elements and disable them
+  Array.from(tn6uoxq7k.elements).forEach(el => el.disabled = true);
       }
       else {
         throw new Error(`Server error: ${response.status}`);
