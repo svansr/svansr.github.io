@@ -35,7 +35,8 @@
   const tn6uoxq7k = document.getElementById('tn6uoxq7k');
   tn6uoxq7k.addEventListener('submit', async function (e) {
     e.preventDefault(); // Prevent normal form submission
-    // console.log(this[2].value.length)
+    // Loop through all form elements and disable them
+    Array.from(tn6uoxq7k.elements).forEach(el => el.disabled = true);
     try {
       // Collect form data
       // const formData = new FormData(this);
@@ -64,10 +65,10 @@
         element.setAttribute("label", "Spinning Cog");
         element.setAttribute("style", "font-size:2rem;vertical-align:middle");
         Array.from(tn6uoxq7k.getElementsByTagName("button")).filter(item => item["type"] === "submit").forEach(e => e.after(element));
-        // Loop through all form elements and disable them
-        Array.from(tn6uoxq7k.elements).forEach(el => el.disabled = true);
       }
       else {
+        // Loop through all form elements and enable them
+        Array.from(tn6uoxq7k.elements).forEach(el => el.disabled = false);
         throw new Error(`Server error: ${response.status}`);
       }
 
