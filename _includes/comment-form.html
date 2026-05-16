@@ -35,8 +35,6 @@
   const tn6uoxq7k = document.getElementById('tn6uoxq7k');
   tn6uoxq7k.addEventListener('submit', async function (e) {
     e.preventDefault(); // Prevent normal form submission
-    // Loop through all form elements and disable them
-    Array.from(tn6uoxq7k.elements).forEach(el => el.disabled = true);
     try {
       // Collect form data
       // const formData = new FormData(this);
@@ -56,6 +54,8 @@
       });
 
       console.log('Create comment requested');
+      // Loop through all form elements and disable them
+      Array.from(tn6uoxq7k.elements).forEach(el => el.disabled = true);
       if (response.ok) {
         console.log('Response is OK');
         ;// location.reload(); // Refresh page
