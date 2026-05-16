@@ -23,18 +23,16 @@
 <form class="comment-form" id="tn6uoxq7k">
   <input name="options[redirect]" type="hidden" value="{{ page.url | absolute_url }}" />
   <input name="options[slug]" type="hidden" value="{{ page.slug }}" />
-
   <textarea class="comment-message" name="fields[message]" placeholder="Comment (markdown accepted)"
     required></textarea>
   <div class="comment-bottom">
     <input class="comment-name" name="fields[name]" type="text" placeholder="Name" required />
     <button class="comment-submit" type="submit">SEND</button>
+    <!-- <wa-icon name="cog" animation="spin" label="Spinning Cog" style="font-size: 2rem;vertical-align: middle"></wa-icon> -->
   </div>
 </form>
 <script>
   const tn6uoxq7k = document.getElementById('tn6uoxq7k');
-  // const yyy=document.getElementsByTagName('form');
-  // console.log(yyy[0][2].value.length)
   tn6uoxq7k.addEventListener('submit', async function (e) {
     e.preventDefault(); // Prevent normal form submission
     // console.log(this[2].value.length)
@@ -60,8 +58,14 @@
       if (response.ok) {
         console.log('Response is OK');
         ;// location.reload(); // Refresh page
+        const element = document.createElement("wa-icon");
+        element.setAttribute("name", "cog");
+        element.setAttribute("animation", "spin");
+        element.setAttribute("label", "Spinning Cog");
+        element.setAttribute("style", "font-size:2rem;vertical-align:middle");
+        Array.from(tn6uoxq7k.getElementsByTagName("button")).filter(item => item["type"] === "submit").forEach(e => e.after(element));
         // Loop through all form elements and disable them
-  Array.from(tn6uoxq7k.elements).forEach(el => el.disabled = true);
+        Array.from(tn6uoxq7k.elements).forEach(el => el.disabled = true);
       }
       else {
         throw new Error(`Server error: ${response.status}`);
