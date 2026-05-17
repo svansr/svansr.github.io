@@ -34,23 +34,14 @@
 <script>
   const tn6uoxq7k = document.getElementById('tn6uoxq7k');
   tn6uoxq7k.addEventListener('submit', async function (e) {
+    e.submitter.disabled = true;
     e.preventDefault(); // Prevent normal form submission
     try {
-      // Collect form data
-      // const formData = new FormData(this);
-      // console.log("All form entries:");
-      //       for (const [key, value] of formData.entries()) {
-      //         console.log(key, ":", value);
-      //       }
       // Send POST request
       const response = await fetch('{{ site.staticman_url }}/api/handle/form', {
         method: 'POST',
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(new FormData(this)).toString()
-        // headers: {
-        //       "Content-Type": "application/x-www-form-urlencoded"
-        //   },
-        // body: formData
       });
 
       console.log('Create comment requested');
