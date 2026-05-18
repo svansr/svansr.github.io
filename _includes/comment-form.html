@@ -33,8 +33,7 @@
 </form>
 <script>
   const tn6uoxq7k = document.getElementById('tn6uoxq7k');
-  console.log('check: ' + tn6uoxq7k.constructor.name)
-  tn6uoxq7k.addEventListener('submit', async function (e) {
+  const eventListener = async function (e) {
     e.submitter.disabled = true;
     e.preventDefault(); // Prevent normal form submission
     let targetForm = e.submitter.parentElement;
@@ -75,5 +74,7 @@
       console.error('Error:', error);
       // alert('Failed to send form.');
     }
-  });
+  };
+  
+  tn6uoxq7k.addEventListener('submit', eventListener);
 </script>
