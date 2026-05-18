@@ -33,9 +33,15 @@
 </form>
 <script>
   const tn6uoxq7k = document.getElementById('tn6uoxq7k');
+  console.log('check: ' + tn6uoxq7k.constructor.name)
   tn6uoxq7k.addEventListener('submit', async function (e) {
     e.submitter.disabled = true;
     e.preventDefault(); // Prevent normal form submission
+    let targetForm = e.submitter.parentElement;
+    while (targetForm.constructor.name !== "HTMLFormElement") {
+      targetForm = targetForm.parentElement;
+    }
+    
     try {
       // Send POST request
       const response = await fetch('{{ site.staticman_url }}/api/handle/form', {
@@ -45,7 +51,6 @@
       });
 
       console.log('Create comment requested');
-      const targetForm = tn6uoxq7k;
       // Loop through all form elements and disable them
       Array.from(targetForm.elements).forEach(el => el.disabled = true);
       if (response.ok) {
