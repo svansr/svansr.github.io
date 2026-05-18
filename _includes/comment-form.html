@@ -33,6 +33,21 @@
 </form>
 <script>
   const tn6uoxq7k = document.getElementById('tn6uoxq7k');
+  {% unless foo %}
+  /**
+           * Generates a random ID string
+           * @param {number} length - Length of the random string
+           * @returns {string} Random alphanumeric string
+           */
+  function generateRandomId(length = 8) {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+      result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return result;
+  }
+
   const eventListener = async function (e) {
     e.submitter.disabled = true;
     e.preventDefault(); // Prevent normal form submission
@@ -40,7 +55,7 @@
     while (targetForm.constructor.name !== "HTMLFormElement") {
       targetForm = targetForm.parentElement;
     }
-    
+
     try {
       // Send POST request
       const response = await fetch('{{ site.staticman_url }}/api/handle/form', {
@@ -72,9 +87,13 @@
       console.log(`Server says: ${result}`);
     } catch (error) {
       console.error('Error:', error);
-      // alert('Failed to send form.');
     }
   };
-  
+  {% assign foo = true %}
+  {% endunless %}
+
   tn6uoxq7k.addEventListener('submit', eventListener);
+  // Generate a random ID and assign it
+  const randomId = generateRandomId();
+  tn6uoxq7k.id = randomId;
 </script>
