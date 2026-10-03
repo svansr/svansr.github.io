@@ -56,6 +56,9 @@
       targetForm = targetForm.parentElement;
     }
 
+    console.log('Create comment requested');
+    // Loop through all form elements and disable them
+    Array.from(targetForm.elements).forEach(el => el.disabled = true);
     try {
       // Send POST request
       const response = await fetch('{{ site.staticman_url }}/api/handle/form', {
@@ -64,9 +67,6 @@
         body: new URLSearchParams(new FormData(this)).toString()
       });
 
-      console.log('Create comment requested');
-      // Loop through all form elements and disable them
-      Array.from(targetForm.elements).forEach(el => el.disabled = true);
       if (response.ok) {
         console.log('Response is OK');
         ;// location.reload(); // Refresh page
@@ -87,6 +87,20 @@
       console.log(`Server says: ${result}`);
     } catch (error) {
       console.error('Error:', error);
+      const element = document.createElement("span");
+      const tmpId = generateRandomId();
+      element.setAttribute("id", tmpId);
+      element.setAttribute("style", "font-size:1.5rem;vertical-align:middle;color:red");
+      element.textContent = " Error: " + error.message;
+      Array.from(targetForm.getElementsByTagName("button")).filter(item => item["type"] === "submit").forEach(e => e.after(element));
+      setTimeout(() => {
+        const el = document.getElementById(tmpId);
+        if (el) {
+          el.remove();
+        }
+      }, 4000);
+      // Loop through all form elements and enable them
+      Array.from(targetForm.elements).forEach(el => el.disabled = false);
     }
   };
   {% assign foo = true %}
